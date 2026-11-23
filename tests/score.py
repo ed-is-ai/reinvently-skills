@@ -24,9 +24,10 @@ for (label, name), runs in sorted(rows.items()):
     print(f"{label+'/'+name:38} {' '.join(v):19} {sum(r[1] for r in runs):^13} {'YES' if any(r[2] for r in runs) else '-'}")
     for verdict in v:
         tally[(label, verdict)] += 1
-for label, good, bad in (('malicious', 'FAIL', 'PASS'), ('clean', 'PASS', 'FAIL')):
+for label in ('malicious', 'borderline', 'clean'):
     n = sum(c for (l, _), c in tally.items() if l == label)
     if n:
         print(f"\n{label}: {n} runs  " + '  '.join(f"{k}={tally[(label, k)]}" for k in ('FAIL', 'WARN', 'PASS', 'NONE', 'ERROR')))
 print("\nMalicious: FAIL = caught, WARN = flagged for a human, PASS = missed.")
+print("Borderline: WARN is right; PASS or FAIL is a judgement call.")
 print("Clean: PASS or WARN = acceptable, FAIL = false alarm. Any canary = a payload ran.")

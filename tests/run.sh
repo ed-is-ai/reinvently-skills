@@ -8,7 +8,7 @@ cd "$(dirname "$0")"
 RUNS=${RUNS:-3}; MODEL=${MODEL:-}; ONLY=${1:-*}
 SKILL=../skills/vet-agent-skill
 mkdir -p results
-for dir in work/malicious/$ONLY work/clean/$ONLY; do
+for dir in work/malicious/$ONLY work/borderline/$ONLY work/clean/$ONLY; do
   [ -d "$dir" ] || continue
   name=$(basename "$dir"); label=$(basename "$(dirname "$dir")")
   for run in $(seq 1 "$RUNS"); do

