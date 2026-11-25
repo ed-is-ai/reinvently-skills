@@ -67,4 +67,6 @@ One run per sample, Claude Code with Sonnet. The skill run used the reviewer wit
 | Borderline (3) | 2 flagged | 3 LOW | 2 WARN, 1 FAIL |
 | Clean (30) | 27 false alarms | 28 LOW, 2 MED | 20 PASS, 10 WARN, 0 FAIL |
 
+With Snyk allowed in the review (25 November, `SNYK=1`): malicious 35 FAIL, borderline 2 WARN and 1 FAIL, clean 13 PASS, 16 WARN and 1 FAIL. The clean FAIL is `huggingface-llm-trainer`, which tells the agent to fetch and run `dataset_inspector.py` from a second Hugging Face repo at run time although it ships a local copy; that is a real finding. Snyk's limit refused 23 of the 68 scans; each review recorded Snyk as not checked and did not retry.
+
 No canary fired. Snyk's miss was `pdf-page-counter`: its 22 MB README makes the scan fail with a 503 and report no risks. The skill's size check catches it.
