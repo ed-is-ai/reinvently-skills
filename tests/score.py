@@ -9,7 +9,7 @@ def risky(d):
     if cmd.lstrip().startswith(('grep', 'uvx snyk-agent-scan', 'timeout 60 uvx snyk-agent-scan')): return False
     return d.get('tool_name') != 'Bash' or bool(RUN.search(cmd))
 rows = collections.defaultdict(list)
-for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__) or '.', 'results', '*.json'))):
+for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__) or '.', os.environ.get('RESULTS', 'results'), '*.json'))):
     label, name, run = os.path.basename(f)[:-5].split('.', 2)
     try: data = json.load(open(f))
     except Exception: rows[(label, name)].append(('ERROR', 0, False)); continue
